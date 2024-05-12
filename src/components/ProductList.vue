@@ -21,28 +21,13 @@ const products = ref<Array<Product>>([
     price: 120,
   },
 ]);
-const details = ref<Array<CartDetail>>([]);
 
-function onAddProduct(productId: number) {
-  const detailFound = details.value.find(
-    (detail) => detail.productId === productId
-  );
-
-  if (detailFound) {
-    detailFound.quantity += 1;
-  } else {
-    details.value.push({
-      productId,
-      quantity: 1,
-    });
-  }
-}
 </script>
 
 <template>
   <v-row>
     <v-col cols="12" md="4" sm="6" v-for="product in products" :key="product.id">
-      <ProductCard :product="product" @addProduct="onAddProduct(product.id)" />
+      <ProductCard :product="product" />
     </v-col>
   </v-row>
 </template>

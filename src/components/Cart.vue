@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { PropType } from "vue";
-import type { CartDetail } from "../model/types";
-defineProps({
-  details: {
-    type: Object as PropType<Array<CartDetail>>,
-    required: true,
-  },
-});
+import { computed } from "vue";
+import { useCartStore } from "@/stores/cart";
+
+const details = computed(() => {
+  const cartStore = useCartStore();
+  return cartStore.details
+})
+
 </script>
 
 <template>
@@ -14,11 +14,7 @@ defineProps({
     <v-card-text>
       <v-card-title>Productos agregados al carrito:</v-card-title>
       <v-list>
-        <v-list-item
-          v-for="detail in details"
-          :key="detail.productId"
-          value="detail.productId"
-        >
+        <v-list-item v-for="detail in details" :key="detail.productId" value="detail.productId">
           <v-list-item-title>
             Product {{ detail.productId }} (Qty: {{ detail.quantity }})
           </v-list-item-title>

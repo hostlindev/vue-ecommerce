@@ -4,6 +4,6 @@ import Cart from "@/components/Cart.vue";
 
 <template>
     <main>
-        <Cart :details="[]" />
+        <Cart />
     </main>
 </template>

@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Product } from "../model/types";
-defineProps({
+import { useCartStore } from "@/stores/cart";
+
+const props = defineProps({
   product: {
     type: Object as PropType<Product>,
     required: true,
   },
 });
-const emit = defineEmits(["addProduct"]);
+
 
 function onAddButtonClick() {
-  emit("addProduct");
+  const cartStore = useCartStore();
+  cartStore.addProduct(props.product.id)
 }
 </script>
 
