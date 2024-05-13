@@ -7,7 +7,7 @@ export const useCartStore = defineStore("cart", () => {
   const details = ref(<Array<CartDetail>>[]);
 
   // Getters
-  const cartItemsCount = computed((state) => {
+  const cartItemsCount = computed(() => {
     let count = 0;
     details.value.forEach((detail) => {
       count += detail.quantity;
@@ -16,7 +16,7 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   // Actions
-  function addProduct(productId: number) {
+  const addProduct = (productId: number) => {
     const detailFound = details.value.find(
       (detail) => detail.productId === productId
     );
@@ -29,6 +29,45 @@ export const useCartStore = defineStore("cart", () => {
         quantity: 1,
       });
     }
-  }
-  return { details, addProduct, cartItemsCount };
+  };
+
+  const deleteProduct = (productId: number) => {
+    const index = details.value.findIndex(
+      (detail) => detail.productId === productId
+    );
+    details.value.splice(index, 1);
+  };
+
+  const increment = (productId: number) => {
+    const detailFound = details.value.find(
+      (detail) => detail.productId === productId
+    );
+
+    if (detailFound) {
+      detailFound.quantity += 1;
+    }
+  };
+
+  const decrement = (productId: number) => {
+    const detailFound = details.value.find(
+      (detail) => detail.productId === productId
+    );
+
+    if (detailFound) {
+      detailFound.quantity -= 1;
+
+      if (detailFound.quantity === 0) {
+        deleteProduct(productId);
+      }
+    }
+  };
+
+  return {
+    details,
+    cartItemsCount,
+    addProduct,
+    increment,
+    decrement,
+    deleteProduct,
+  };
 });

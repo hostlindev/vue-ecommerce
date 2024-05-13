@@ -10,32 +10,35 @@ const props = defineProps({
   },
 });
 
+const cartStore = useCartStore();
 
-function onAddButtonClick() {
-  const cartStore = useCartStore();
-  cartStore.addProduct(props.product.id)
-}
+const onAddButtonClick = () => {
+  cartStore.addProduct(props.product.id);
+};
 </script>
 
 <template>
   <v-card>
-    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" cover></v-img>
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      height="200px"
+      cover
+    ></v-img>
     <v-card-title>
       <p>{{ product.name }}</p>
     </v-card-title>
     <v-card-text>
       <p class="mb-2">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita dignissimos saepe corrupti voluptates eaque.
-        Necessitatibus eius consequatur atque dolorum voluptatibus. Ullam tempora voluptatibus officiis sunt, amet
-        voluptatem ipsam eligendi consequuntur!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita dignissimos
+        saepe corrupti voluptates eaque. Necessitatibus eius consequatur atque dolorum
+        voluptatibus. Ullam tempora voluptatibus officiis sunt, amet voluptatem ipsam
+        eligendi consequuntur!
       </p>
       <v-chip> $ {{ product.price }} </v-chip>
     </v-card-text>
     <v-card-actions>
       <v-btn variant="flat" block color="primary" @click="onAddButtonClick">
-        <v-icon>
-          mdi-cart
-        </v-icon>
+        <v-icon> mdi-cart </v-icon>
         add cart
       </v-btn>
     </v-card-actions>

@@ -3,8 +3,9 @@ import { RouterLink } from "vue-router";
 import { useCartStore } from "@/stores/cart";
 import { computed } from "vue";
 
+const cartStore = useCartStore();
+
 const itemsCount = computed(() => {
-  const cartStore = useCartStore();
   return cartStore.cartItemsCount;
 });
 </script>
@@ -17,15 +18,15 @@ const itemsCount = computed(() => {
 
       <!-- Botones para navegar -->
       <RouterLink to="/" custom v-slot="{ navigate }">
-        <v-btn variant="text" @click="navigate"> Home </v-btn>
+        <v-btn prepend-icon="mdi-home" :active="$route.name === 'home'" variant="text" @click="navigate"> Home </v-btn>
       </RouterLink>
       <RouterLink to="/cart" custom v-slot="{ navigate }">
         <v-badge color="red" :model-value="itemsCount > 0" :content="itemsCount">
-          <v-btn variant="text" @click="navigate"> Cart </v-btn>
+          <v-btn prepend-icon="mdi-cart" :active="$route.name === 'cart'" variant="text" @click="navigate"> Cart </v-btn>
         </v-badge>
       </RouterLink>
       <RouterLink to="/about" custom v-slot="{ navigate }">
-        <v-btn variant="text" @click="navigate"> About </v-btn>
+        <v-btn prepend-icon="mdi-information" :active="$route.name === 'about'" variant="text" @click="navigate"> About </v-btn>
       </RouterLink>
 
       <v-spacer></v-spacer>
