@@ -1,10 +1,10 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-import type { CartDetail } from "@/model/types";
+import type { CartDetail, Product } from "@/model/types";
 
 export const useCartStore = defineStore("cart", () => {
   // States
-  const details = ref(<Array<CartDetail>>[]);
+  const details = ref([] as CartDetail[]);
 
   // Getters
   const cartItemsCount = computed(() => {
@@ -16,16 +16,16 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   // Actions
-  const addProduct = (productId: number) => {
+  const addProduct = (product: Product) => {
     const detailFound = details.value.find(
-      (detail) => detail.productId === productId
+      (detail) => detail.product.id === product.id
     );
 
     if (detailFound) {
       detailFound.quantity += 1;
     } else {
       details.value.push({
-        productId,
+        product,
         quantity: 1,
       });
     }
@@ -33,14 +33,14 @@ export const useCartStore = defineStore("cart", () => {
 
   const deleteProduct = (productId: number) => {
     const index = details.value.findIndex(
-      (detail) => detail.productId === productId
+      (detail) => detail.product.id === productId
     );
     details.value.splice(index, 1);
   };
 
   const increment = (productId: number) => {
     const detailFound = details.value.find(
-      (detail) => detail.productId === productId
+      (detail) => detail.product.id === productId
     );
 
     if (detailFound) {
@@ -50,7 +50,7 @@ export const useCartStore = defineStore("cart", () => {
 
   const decrement = (productId: number) => {
     const detailFound = details.value.find(
-      (detail) => detail.productId === productId
+      (detail) => detail.product.id === productId
     );
 
     if (detailFound) {

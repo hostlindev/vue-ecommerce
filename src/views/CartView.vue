@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Cart from "@/components/Cart.vue";
+import ShoppingCart from "@/components/ShoppingCart.vue";
 </script>
 
 <template>
     <main>
-        <Cart />
+        <ShoppingCart />
     </main>
 </template>

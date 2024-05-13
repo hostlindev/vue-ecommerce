@@ -12,9 +12,9 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 
-const onAddButtonClick = () => {
-  cartStore.addProduct(props.product.id);
-};
+function onAddButtonClick() {
+  cartStore.addProduct(props.product);
+}
 </script>
 
 <template>

@@ -34,29 +34,29 @@ const deleteProduct = (productId: number) => {
       <v-list v-if="details.length > 0">
         <v-list-item
           v-for="detail in details"
-          :key="detail.productId"
-          value="detail.productId"
+          :key="detail.product.id"
+          value="detail.product.id"
         >
           <v-list-item-title>
-            Product {{ detail.productId }}
+            {{ detail.product.name }}
             <v-btn
               size="x-small"
               variant="plain"
               icon="mdi-minus"
-              @click="decrementQuantity(detail.productId)"
+              @click="decrementQuantity(detail.product.id)"
             ></v-btn>
             {{ detail.quantity }}
             <v-btn
               size="x-small"
               variant="plain"
               icon="mdi-plus"
-              @click="incrementQuantity(detail.productId)"
+              @click="incrementQuantity(detail.product.id)"
             ></v-btn>
             <v-btn
               size="x-small"
               variant="plain"
               icon="mdi-trash-can"
-              @click="deleteProduct(detail.productId)"
+              @click="deleteProduct(detail.product.id)"
             ></v-btn>
           </v-list-item-title>
         </v-list-item>

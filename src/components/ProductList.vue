@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { CartDetail, Product } from "../model/types";
+import type { Product } from "../model/types";
 import ProductCard from "./ProductCard.vue";
 
-
-const products = ref<Array<Product>>([
+const products = ref([
   {
     id: 1,
     name: "Silla",
@@ -35,8 +34,7 @@ const products = ref<Array<Product>>([
     name: "Microfono",
     price: 120,
   },
-]);
-
+] as Product[]);
 </script>
 
 <template>
