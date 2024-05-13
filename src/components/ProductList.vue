@@ -20,6 +20,21 @@ const products = ref<Array<Product>>([
     name: "Microfono",
     price: 120,
   },
+  {
+    id: 1,
+    name: "Silla",
+    price: 56,
+  },
+  {
+    id: 2,
+    name: "Monitor",
+    price: 450,
+  },
+  {
+    id: 3,
+    name: "Microfono",
+    price: 120,
+  },
 ]);
 
 </script>
