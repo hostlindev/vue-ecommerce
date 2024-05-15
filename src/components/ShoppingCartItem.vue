@@ -18,6 +18,10 @@ const productImageUrl = computed(() => {
   );
 });
 
+const subTotal = computed(() => {
+  return props.detail.product.price * props.detail.quantity;
+});
+
 /* Functions */
 // Incrementar la cantidad de productos agregado al carrito por productId
 const incrementQuantity = (productId: number) => {
@@ -35,12 +39,14 @@ const deleteProduct = (productId: number) => {
 };
 </script>
 <template>
-  <v-list-item value="detail.product.id">
-    <v-avatar>
-      <v-img :lazy-src="productImageUrl" :src="productImageUrl"></v-img>
-    </v-avatar>
-    <v-list-item-title>
+  <tr>
+    <td>
+      <v-avatar>
+        <v-img :lazy-src="productImageUrl" :src="productImageUrl"></v-img>
+      </v-avatar>
       {{ detail.product.name }}
+    </td>
+    <td>
       <v-btn
         size="x-small"
         variant="plain"
@@ -54,12 +60,16 @@ const deleteProduct = (productId: number) => {
         icon="mdi-plus"
         @click="incrementQuantity(detail.product.id)"
       ></v-btn>
+    </td>
+    <td>${{ detail.product.price }}</td>
+    <td>${{ subTotal }}</td>
+    <td>
       <v-btn
         size="x-small"
         variant="plain"
         icon="mdi-trash-can"
         @click="deleteProduct(detail.product.id)"
       ></v-btn>
-    </v-list-item-title>
-  </v-list-item>
+    </td>
+  </tr>
 </template>
