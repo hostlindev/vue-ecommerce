@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import { computed, PropType } from "vue";
 import type { Product } from "../model/types";
 import { useCartStore } from "@/stores/cart";
 
@@ -8,6 +8,10 @@ const props = defineProps({
     type: Object as PropType<Product>,
     required: true,
   },
+});
+
+const productImageUrl = computed(() => {
+  return props.product.image ?? "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg";
 });
 
 const cartStore = useCartStore();
@@ -19,11 +23,7 @@ function onAddButtonClick() {
 
 <template>
   <v-card>
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-      cover
-    ></v-img>
+    <v-img :lazy-src="productImageUrl" :src="productImageUrl" height="200px"  cover></v-img>
     <v-card-title>
       <p>{{ product.name }}</p>
     </v-card-title>
