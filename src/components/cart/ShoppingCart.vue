@@ -23,6 +23,7 @@ const details = computed(() => {
             <th class="text-left">Cantidad</th>
             <th class="text-left">Precio</th>
             <th class="text-left">Subtotal</th>
+            <th><span class="d-sr-only">Eliminar</span></th>
           </tr>
         </thead>
         <tbody>

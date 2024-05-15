@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ShoppingCart from "@/components/ShoppingCart.vue";
+import ShoppingCart from "@/components/cart/ShoppingCart.vue";
+import SummaryCart from "@/components/cart/SummaryCart.vue";
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
       <ShoppingCart />
     </v-col>
     <v-col cols="4">
-        Total a pagar
+      <SummaryCart />
     </v-col>
   </v-row>
 </template>

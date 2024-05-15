@@ -24,7 +24,7 @@ const products = ref([
   },
   {
     id: 4,
-    name: "Teclado",
+    name: "Teclado Simple",
     price: 0.99,
     image: "https://www.neoteo.com/wp-content/uploads/2013/07/105AE.jpg"
   },

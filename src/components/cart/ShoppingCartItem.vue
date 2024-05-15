@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, PropType } from "vue";
-import type { CartDetail } from "../model/types";
+import type { CartDetail } from "../../model/types";
 import { useCartStore } from "@/stores/cart";
 
 const cartStore = useCartStore();

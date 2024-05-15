@@ -14,6 +14,13 @@ export const useCartStore = defineStore("cart", () => {
     });
     return count;
   });
+  const totalAmount = computed(() => {
+    let total = 0;
+    details.value.forEach((detail) => {
+      total += detail.product.price * detail.quantity;
+    });
+    return total;
+  });
 
   // Actions
   const addProduct = (product: Product) => {
@@ -65,6 +72,7 @@ export const useCartStore = defineStore("cart", () => {
   return {
     details,
     cartItemsCount,
+    totalAmount,
     addProduct,
     increment,
     decrement,
