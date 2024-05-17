@@ -12,7 +12,7 @@ const products = ref([
   },
   {
     id: 2,
-    name: "Monitor Clasico",
+    name: "Monitor Clasico 8k",
     price: 3500.89,
     image: "https://images.milenio.com/fb5zz4XUWDoY5TA4shio3_hZuV0=/942x532/uploads/media/2019/08/09/la-promocion-esta-disponible-hasta_0_21_800_498.jpg"
   },
